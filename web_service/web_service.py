@@ -11,20 +11,22 @@ HTML = """
     <head>
         <title>Mikro Hizmetli Selam!</title>
         <style>
-            body {
+            body
+            {
                font-family: arial;
                text-align: center;
                padding: 50px;
-               background: #eef2f3;
+               background : #eef2f3;
             }
-            h1 {
+            h1
+            {
                 color: #333;
             }
             input {
                 padding: 10px;
                 font-size: 16px;
             }
-            button {
+            button{
                 padding: 10px;
                 font-size: 16px;
                 cursor: pointer;
@@ -33,7 +35,7 @@ HTML = """
                 border: none;
                 border-radius: 6px;
             }
-            li {
+            li{
                 background: white;
                 margin: 5px auto;
                 width: 200px;
@@ -67,10 +69,9 @@ def index():
         return redirect("/")
 
     resp = requests.get(API_URL + "/ziyaretciler")
-    isimler = resp.json() if resp.status_code == 200 else []
-
-    return render_template_string(HTML, ziyaretciler=isimler)
-
+    isimler = resp.json()
+     if resp.status_code == 200 else []
+    return render_template_string(HTML, isimler=isimler)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
